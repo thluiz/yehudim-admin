@@ -1,0 +1,2273 @@
+  [1m[36m (23.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (11.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTvshows (20140617180656)
+  [1m[35m (42.0ms)[0m  CREATE TABLE "tvshows" ("id" serial primary key, "name" character varying(255), "identifier" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mSELECT version()[0m
+  [1m[35mSQL (11.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140617180656')
+Migrating to CreateEpisodes (20140617180737)
+  [1m[36m (39.0ms)[0m  [1mCREATE TABLE "episodes" ("id" serial primary key, "title" character varying(255), "identifier" character varying(255), "description" text, "tvshow_id" integer, "publication" timestamp, "order" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140617180737')
+Migrating to CreateVideos (20140617180827)
+  [1m[36m (33.0ms)[0m  [1mCREATE TABLE "videos" ("id" serial primary key, "episode_id" integer, "identifier" character varying(255), "title" character varying(255), "description" text, "order" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140617180827')
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPK and Serial Sequence (8.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"episodes"'::regclass
+
+  [1m[36mPK and Serial Sequence (6.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"tvshows"'::regclass
+[0m
+  [1m[35mPK and Serial Sequence (4.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"videos"'::regclass
+
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:11:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/railties-4.1.1/lib/rails/templates/rails/welcome/index.html.erb (35.0ms)
+Completed 200 OK in 1717ms (Views: 159.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2014-06-17 15:11:34 -0300
+Processing by Rails::InfoController#properties as */*
+  [1m[35mActiveRecord::SchemaMigration Load (2.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/railties-4.1.1/lib/rails/templates/rails/info/properties.html.erb (5.0ms)
+Completed 200 OK in 736ms (Views: 566.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:16:43 -0300
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 11033ms (Views: 11026.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:16:57 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:16:57 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:16:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:16:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:16:57 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:16:58 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:18:04 -0300
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (63.0ms)
+Completed 200 OK in 311ms (Views: 260.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:05 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:06 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:06 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:18:06 -0300
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:18:11 -0300
+Processing by TvshowsController#index as HTML
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered tvshows/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 251ms (Views: 185.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/tvshows/new" for 127.0.0.1 at 2014-06-17 15:18:13 -0300
+Processing by TvshowsController#new as HTML
+  Rendered tvshows/_form.html.erb (598.0ms)
+  Rendered tvshows/new.html.erb within layouts/application (817.0ms)
+Completed 200 OK in 1056ms (Views: 1007.0ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:18:22 -0300
+Processing by EpisodesController#index as HTML
+  [1m[35mEpisode Load (4.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered episodes/index.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 278ms (Views: 240.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 15:18:31 -0300
+Processing by VideosController#index as HTML
+  [1m[36mVideo Load (5.0ms)[0m  [1mSELECT "videos".* FROM "videos"[0m
+  Rendered videos/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 302ms (Views: 244.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:21:45 -0300
+Processing by EpisodesController#index as HTML
+  [1m[35mEpisode Load (3.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered episodes/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 382ms (Views: 181.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/episodes/new" for 127.0.0.1 at 2014-06-17 15:21:50 -0300
+Processing by EpisodesController#new as HTML
+  Rendered episodes/_form.html.erb (315.0ms)
+  Rendered episodes/new.html.erb within layouts/application (370.0ms)
+Completed 200 OK in 653ms (Views: 593.0ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/episodes/new" for 127.0.0.1 at 2014-06-17 15:26:00 -0300
+Processing by EpisodesController#new as HTML
+  [1m[36mTvshow Load (3.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered episodes/_form.html.erb (271.0ms)
+  Rendered episodes/new.html.erb within layouts/application (307.0ms)
+Completed 200 OK in 617ms (Views: 490.0ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:02 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:03 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:03 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:03 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:03 -0300
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:26:06 -0300
+Processing by EpisodesController#index as HTML
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered episodes/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 170ms (Views: 159.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:26:07 -0300
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 315ms (Views: 219.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:26:09 -0300
+Processing by TvshowsController#index as HTML
+  [1m[36mTvshow Load (2.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered tvshows/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 207ms (Views: 188.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/tvshows/new" for 127.0.0.1 at 2014-06-17 15:26:10 -0300
+Processing by TvshowsController#new as HTML
+  Rendered tvshows/_form.html.erb (84.0ms)
+  Rendered tvshows/new.html.erb within layouts/application (123.0ms)
+Completed 200 OK in 316ms (Views: 277.0ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/tvshows" for 127.0.0.1 at 2014-06-17 15:26:15 -0300
+Processing by TvshowsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "tvshow"=>{"name"=>"teste", "identifier"=>"teste", "description"=>""}, "commit"=>"Create Tvshow"}
+  [1m[35m (7.0ms)[0m  SELECT version()
+  [1m[36mSQL (20.0ms)[0m  [1mINSERT INTO "tvshows" ("created_at", "description", "identifier", "name", "updated_at") VALUES ('2014-06-17 18:26:15.241000', '', 'teste', 'teste', '2014-06-17 18:26:15.241000') RETURNING "id"[0m
+Redirected to http://localhost:3000/tvshows/1
+Completed 302 Found in 342ms (ActiveRecord: 27.0ms)
+
+
+Started GET "/tvshows/1" for 127.0.0.1 at 2014-06-17 15:26:15 -0300
+Processing by TvshowsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTvshow Load (12.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."id" = 1 LIMIT 1
+  Rendered tvshows/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 221ms (Views: 189.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:16 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:17 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:17 -0300
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:26:19 -0300
+Processing by TvshowsController#index as HTML
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered tvshows/index.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 315ms (Views: 300.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:26:26 -0300
+Processing by TvshowsController#index as HTML
+  [1m[35mTvshow Load (3.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered tvshows/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 181ms (Views: 170.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:26:27 -0300
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 209ms (Views: 190.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:26:29 -0300
+Processing by EpisodesController#index as HTML
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"[0m
+  Rendered episodes/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 172ms (Views: 156.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/episodes/new" for 127.0.0.1 at 2014-06-17 15:26:30 -0300
+Processing by EpisodesController#new as HTML
+  [1m[35mTvshow Load (3.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered episodes/_form.html.erb (155.0ms)
+  Rendered episodes/new.html.erb within layouts/application (212.0ms)
+Completed 200 OK in 398ms (Views: 382.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/episodes" for 127.0.0.1 at 2014-06-17 15:26:43 -0300
+Processing by EpisodesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "episode"=>{"title"=>"teste", "identifier"=>"teste", "description"=>"", "tvshow_id"=>"1", "publication(1i)"=>"2014", "publication(2i)"=>"6", "publication(3i)"=>"17", "publication(4i)"=>"18", "publication(5i)"=>"26", "order"=>"1"}, "commit"=>"Create Episode"}
+  [1m[36mSQL (17.0ms)[0m  [1mINSERT INTO "episodes" ("created_at", "description", "identifier", "order", "publication", "title", "tvshow_id", "updated_at") VALUES ('2014-06-17 18:26:43.697000', '', 'teste', 1, '2014-06-17 18:26:00.000000', 'teste', 1, '2014-06-17 18:26:43.697000') RETURNING "id"[0m
+  [1m[35mSQL (14.0ms)[0m  INSERT INTO "videos" ("created_at", "episode_id", "order", "title", "updated_at") VALUES ('2014-06-17 18:26:44.104000', 1, 1, 'teste', '2014-06-17 18:26:44.104000') RETURNING "id"
+Redirected to http://localhost:3000/episodes/1
+Completed 302 Found in 483ms (ActiveRecord: 44.0ms)
+
+
+Started GET "/episodes/1" for 127.0.0.1 at 2014-06-17 15:26:44 -0300
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEpisode Load (6.0ms)[0m  [1mSELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 1 LIMIT 1[0m
+  Rendered episodes/show.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 198ms (Views: 172.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:26:45 -0300
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:26:48 -0300
+Processing by EpisodesController#index as HTML
+  [1m[35mEpisode Load (4.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered episodes/index.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 206ms (Views: 186.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:26:54 -0300
+Processing by EpisodesController#index as HTML
+  [1m[36mEpisode Load (5.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"[0m
+  Rendered episodes/index.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 246ms (Views: 232.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-17 15:26:56 -0300
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 290ms (Views: 261.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 15:26:58 -0300
+Processing by VideosController#index as HTML
+  [1m[35mVideo Load (4.0ms)[0m  SELECT "videos".* FROM "videos"
+  Rendered videos/index.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 265ms (Views: 247.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 15:27:30 -0300
+Processing by VideosController#index as HTML
+  [1m[36mVideo Load (4.0ms)[0m  [1mSELECT "videos".* FROM "videos"[0m
+  Rendered videos/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 256ms (Views: 242.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:31 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:32 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:32 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:32 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:32 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:27:32 -0300
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 15:27:34 -0300
+Processing by VideosController#index as HTML
+  [1m[35mVideo Load (5.0ms)[0m  SELECT "videos".* FROM "videos"
+  Rendered videos/index.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 210ms (Views: 198.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/videos/1/edit" for 127.0.0.1 at 2014-06-17 15:27:38 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (5.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1 LIMIT 1[0m
+  [1m[35mEpisode Load (5.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered videos/_form.html.erb (152.0ms)
+  Rendered videos/edit.html.erb within layouts/application (208.0ms)
+Completed 500 Internal Server Error in 333ms
+
+ActionView::Template::Error (undefined method `name' for #<Episode:0x94b51a>):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :episode_id %><br>
+    16:     <%= select("video", "episode_id", @episodes.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :identifier %><br>
+  app/views/videos/_form.html.erb:16:in `_app_views_videos__form_html_erb___1093722157_7928'
+  app/views/videos/_form.html.erb:16:in `_app_views_videos__form_html_erb___1093722157_7928'
+  app/views/videos/_form.html.erb:1:in `_app_views_videos__form_html_erb___1093722157_7928'
+  app/views/videos/edit.html.erb:3:in `_app_views_videos_edit_html_erb___519481430_7920'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (516.0ms)
+
+
+Started GET "/videos/1/edit" for 127.0.0.1 at 2014-06-17 15:27:39 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (3.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1 LIMIT 1[0m
+  [1m[35mEpisode Load (4.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered videos/_form.html.erb (101.0ms)
+  Rendered videos/edit.html.erb within layouts/application (132.0ms)
+Completed 500 Internal Server Error in 226ms
+
+ActionView::Template::Error (undefined method `name' for #<Episode:0x3a2947>):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :episode_id %><br>
+    16:     <%= select("video", "episode_id", @episodes.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :identifier %><br>
+  app/views/videos/_form.html.erb:16:in `_app_views_videos__form_html_erb___1093722157_8012'
+  app/views/videos/_form.html.erb:16:in `_app_views_videos__form_html_erb___1093722157_8012'
+  app/views/videos/_form.html.erb:1:in `_app_views_videos__form_html_erb___1093722157_8012'
+  app/views/videos/edit.html.erb:3:in `_app_views_videos_edit_html_erb___519481430_8008'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (455.0ms)
+
+
+Started GET "/videos/1/edit" for 127.0.0.1 at 2014-06-17 15:28:02 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (4.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1 LIMIT 1[0m
+  [1m[35mEpisode Load (5.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered videos/_form.html.erb (150.0ms)
+  Rendered videos/edit.html.erb within layouts/application (179.0ms)
+Completed 200 OK in 344ms (Views: 319.0ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:28:02 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:28:02 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:28:03 -0300
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:30:31 -0300
+Processing by TvshowsController#index as HTML
+  [1m[36mTvshow Load (5.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered tvshows/index.html.erb within layouts/application (117.0ms)
+Completed 200 OK in 335ms (Views: 258.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/tvshows/new" for 127.0.0.1 at 2014-06-17 15:30:34 -0300
+Processing by TvshowsController#new as HTML
+  Rendered tvshows/_form.html.erb (68.0ms)
+  Rendered tvshows/new.html.erb within layouts/application (124.0ms)
+Completed 200 OK in 383ms (Views: 370.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tvshows" for 127.0.0.1 at 2014-06-17 15:30:39 -0300
+Processing by TvshowsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "tvshow"=>{"name"=>"", "identifier"=>"", "description"=>""}, "commit"=>"Create Tvshow"}
+  Rendered tvshows/_form.html.erb (73.0ms)
+  Rendered tvshows/new.html.erb within layouts/application (109.0ms)
+Completed 200 OK in 370ms (Views: 301.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:40 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:41 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:41 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:30:41 -0300
+
+
+Started POST "/tvshows" for 127.0.0.1 at 2014-06-17 15:32:42 -0300
+Processing by TvshowsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "tvshow"=>{"name"=>"teste", "identifier"=>"teste", "description"=>""}, "commit"=>"Create Tvshow"}
+  [1m[35mTvshow Exists (4.0ms)[0m  SELECT  1 AS one FROM "tvshows"  WHERE "tvshows"."name" = 'teste' LIMIT 1
+  [1m[36mTvshow Exists (2.0ms)[0m  [1mSELECT  1 AS one FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste' LIMIT 1[0m
+  Rendered tvshows/_form.html.erb (68.0ms)
+  Rendered tvshows/new.html.erb within layouts/application (101.0ms)
+Completed 200 OK in 696ms (Views: 262.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:43 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:43 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:44 -0300
+
+
+Started POST "/tvshows" for 127.0.0.1 at 2014-06-17 15:32:50 -0300
+Processing by TvshowsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "tvshow"=>{"name"=>"teste2", "identifier"=>"teste2", "description"=>""}, "commit"=>"Create Tvshow"}
+  [1m[35mTvshow Exists (3.0ms)[0m  SELECT  1 AS one FROM "tvshows"  WHERE "tvshows"."name" = 'teste2' LIMIT 1
+  [1m[36mTvshow Exists (3.0ms)[0m  [1mSELECT  1 AS one FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste2' LIMIT 1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "tvshows" ("created_at", "description", "identifier", "name", "updated_at") VALUES ('2014-06-17 18:32:50.467000', '', 'teste2', 'teste2', '2014-06-17 18:32:50.467000') RETURNING "id"
+Redirected to http://localhost:3000/tvshows/2
+Completed 302 Found in 72ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/tvshows/2" for 127.0.0.1 at 2014-06-17 15:32:50 -0300
+Processing by TvshowsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."id" = 2 LIMIT 1[0m
+  Rendered tvshows/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 197ms (Views: 176.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:32:51 -0300
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:32:55 -0300
+Processing by EpisodesController#index as HTML
+  [1m[35mEpisode Load (4.0ms)[0m  SELECT "episodes".* FROM "episodes"
+  Rendered episodes/index.html.erb within layouts/application (116.0ms)
+Completed 200 OK in 329ms (Views: 249.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/episodes/1/edit" for 127.0.0.1 at 2014-06-17 15:32:57 -0300
+Processing by EpisodesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEpisode Load (4.0ms)[0m  [1mSELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 1 LIMIT 1[0m
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered episodes/_form.html.erb (90.0ms)
+  Rendered episodes/edit.html.erb within layouts/application (136.0ms)
+Completed 200 OK in 304ms (Views: 276.0ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:34:19 -0300
+Processing by EpisodesController#index as HTML
+  [1m[36mEpisode Load (10.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"[0m
+  Rendered episodes/index.html.erb within layouts/application (144.0ms)
+Completed 200 OK in 381ms (Views: 291.0ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/episodes/new" for 127.0.0.1 at 2014-06-17 15:34:22 -0300
+Processing by EpisodesController#new as HTML
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered episodes/_form.html.erb (176.0ms)
+  Rendered episodes/new.html.erb within layouts/application (215.0ms)
+Completed 200 OK in 430ms (Views: 355.0ms | ActiveRecord: 15.0ms)
+
+
+Started POST "/episodes" for 127.0.0.1 at 2014-06-17 15:34:31 -0300
+Processing by EpisodesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "episode"=>{"title"=>"teste", "identifier"=>"teste", "description"=>"", "tvshow_id"=>"2", "publication(1i)"=>"2014", "publication(2i)"=>"6", "publication(3i)"=>"17", "publication(4i)"=>"18", "publication(5i)"=>"34", "order"=>""}, "commit"=>"Create Episode"}
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."id" = 2 LIMIT 1[0m
+  [1m[35mEpisode Exists (3.0ms)[0m  SELECT  1 AS one FROM "episodes"  WHERE "episodes"."title" = 'teste' LIMIT 1
+  [1m[36mEpisode Exists (3.0ms)[0m  [1mSELECT  1 AS one FROM "episodes"  WHERE "episodes"."identifier" = 'teste' LIMIT 1[0m
+  Rendered episodes/_form.html.erb (121.0ms)
+  Rendered episodes/new.html.erb within layouts/application (150.0ms)
+Completed 500 Internal Server Error in 456ms
+
+ActionView::Template::Error (undefined method `collect' for nil:NilClass):
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :tvshow_id %><br>
+    28:     <%= select("episode", "tvshow_id", @tvshows.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+    29:   </div>
+    30:   <div class="field">
+    31:     <%= f.label :publication %><br>
+  app/views/episodes/_form.html.erb:28:in `_app_views_episodes__form_html_erb__414203108_5544'
+  app/views/episodes/_form.html.erb:1:in `_app_views_episodes__form_html_erb__414203108_5544'
+  app/views/episodes/new.html.erb:3:in `_app_views_episodes_new_html_erb___1743604840_5540'
+  app/controllers/episodes_controller.rb:43:in `create'
+  app/controllers/episodes_controller.rb:31:in `create'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (16.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (519.0ms)
+
+
+Started POST "/episodes" for 127.0.0.1 at 2014-06-17 15:36:10 -0300
+Processing by EpisodesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "episode"=>{"title"=>"teste", "identifier"=>"teste", "description"=>"", "tvshow_id"=>"2", "publication(1i)"=>"2014", "publication(2i)"=>"6", "publication(3i)"=>"17", "publication(4i)"=>"18", "publication(5i)"=>"34", "order"=>""}, "commit"=>"Create Episode"}
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."id" = 2 LIMIT 1
+  [1m[36mEpisode Exists (2.0ms)[0m  [1mSELECT  1 AS one FROM "episodes"  WHERE "episodes"."title" = 'teste' LIMIT 1[0m
+  [1m[35mEpisode Exists (2.0ms)[0m  SELECT  1 AS one FROM "episodes"  WHERE "episodes"."identifier" = 'teste' LIMIT 1
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered episodes/_form.html.erb (128.0ms)
+  Rendered episodes/new.html.erb within layouts/application (169.0ms)
+Completed 200 OK in 741ms (Views: 354.0ms | ActiveRecord: 37.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:11 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:11 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:12 -0300
+
+
+Started POST "/episodes" for 127.0.0.1 at 2014-06-17 15:36:17 -0300
+Processing by EpisodesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "episode"=>{"title"=>"teste2", "identifier"=>"teste2", "description"=>"", "tvshow_id"=>"2", "publication(1i)"=>"2014", "publication(2i)"=>"6", "publication(3i)"=>"17", "publication(4i)"=>"18", "publication(5i)"=>"34", "order"=>""}, "commit"=>"Create Episode"}
+  [1m[35mTvshow Load (4.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."id" = 2 LIMIT 1
+  [1m[36mEpisode Exists (2.0ms)[0m  [1mSELECT  1 AS one FROM "episodes"  WHERE "episodes"."title" = 'teste2' LIMIT 1[0m
+  [1m[35mEpisode Exists (2.0ms)[0m  SELECT  1 AS one FROM "episodes"  WHERE "episodes"."identifier" = 'teste2' LIMIT 1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "episodes" ("created_at", "description", "identifier", "publication", "title", "tvshow_id", "updated_at") VALUES ('2014-06-17 18:36:17.513000', '', 'teste2', '2014-06-17 18:34:00.000000', 'teste2', 2, '2014-06-17 18:36:17.513000') RETURNING "id"[0m
+  [1m[35mVideo Exists (2.0ms)[0m  SELECT  1 AS one FROM "videos"  WHERE "videos"."title" = 'teste2' LIMIT 1
+  [1m[36mVideo Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "videos"  WHERE "videos"."identifier" = 'teste2' LIMIT 1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "videos" ("created_at", "episode_id", "identifier", "order", "title", "updated_at") VALUES ('2014-06-17 18:36:17.732000', 2, 'teste2', 1, 'teste2', '2014-06-17 18:36:17.732000') RETURNING "id"
+Redirected to http://localhost:3000/episodes/2
+Completed 302 Found in 391ms (ActiveRecord: 26.0ms)
+
+
+Started GET "/episodes/2" for 127.0.0.1 at 2014-06-17 15:36:17 -0300
+Processing by EpisodesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEpisode Load (4.0ms)[0m  [1mSELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 2 LIMIT 1[0m
+  Rendered episodes/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 179ms (Views: 154.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:18 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:19 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:19 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 15:36:19 -0300
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 15:39:28 -0300
+Processing by TvshowsController#index as HTML
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered tvshows/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 249ms (Views: 235.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 15:39:30 -0300
+Processing by EpisodesController#index as HTML
+  [1m[36mEpisode Load (4.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"[0m
+  Rendered episodes/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 210ms (Views: 196.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 15:39:30 -0300
+Processing by VideosController#index as HTML
+  [1m[35mVideo Load (4.0ms)[0m  SELECT "videos".* FROM "videos"
+  Rendered videos/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 1105ms (Views: 1084.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 19:36:28 -0300
+Processing by TvshowsController#index as HTML
+  [1m[36mTvshow Load (7.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+  Rendered tvshows/index.html.erb within layouts/application (148.0ms)
+Completed 200 OK in 408ms (Views: 294.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 19:36:29 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 19:36:29 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 19:36:29 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 19:36:29 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 19:36:30 -0300
+
+
+Started GET "/api/v1/tvshows" for 127.0.0.1 at 2014-06-17 19:36:35 -0300
+
+ActionController::RoutingError (undefined method `v1' for Api:Module):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (20.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (23.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (49.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (807.0ms)
+
+
+Started GET "/api/v1/tvshows" for 127.0.0.1 at 2014-06-17 19:37:51 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+Completed 500 Internal Server Error in 13ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  app/controllers/api/v1/tvshows_controller.rb:7:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (493.0ms)
+
+
+Started GET "/api/v1/tvshows" for 127.0.0.1 at 2014-06-17 19:38:15 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+Completed 500 Internal Server Error in 76ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  app/controllers/api/v1/tvshows_controller.rb:7:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (627.0ms)
+
+
+Started GET "/api/v1/tvshows" for 127.0.0.1 at 2014-06-17 19:39:07 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  [1m[35mTvshow Load (4.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+Completed 200 OK in 180ms (Views: 75.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:39:23 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+Completed 500 Internal Server Error in 10ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  app/controllers/api/v1/tvshows_controller.rb:5:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (560.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:39:32 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (6.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+Security warning: an embedded <script> tag on another site requested protected JavaScript. If you know what you're doing, go ahead and disable forgery protection on this action to permit cross-origin JavaScript embedding.
+Completed 500 Internal Server Error in 170ms
+
+ActionController::InvalidCrossOriginRequest (Security warning: an embedded <script> tag on another site requested protected JavaScript. If you know what you're doing, go ahead and disable forgery protection on this action to permit cross-origin JavaScript embedding.):
+  actionpack (4.1.1) lib/action_controller/metal/request_forgery_protection.rb:217:in `verify_same_origin_request'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:424:in `make_lambda'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:231:in `halting'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:229:in `halting'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `halting'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `halting'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:166:in `halting'
+  org/jruby/RubyProc.java:271:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:31:in `process_action'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `instrument'
+  activesupport (4.1.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.1) lib/active_support/notifications/instrumenter.rb:19:in `instrument'
+  activesupport (4.1.1) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.1) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.1) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.1.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.1) lib/action_controller/metal.rb:231:in `action'
+  org/jruby/RubyProc.java:271:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:71:in `call'
+  org/jruby/RubyArray.java:1613:in `each'
+  actionpack (4.1.1) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.1) lib/action_dispatch/routing/route_set.rb:676:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.1) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:138:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:94:in `run'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:72:in `run'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/server.rb:191:in `start_thread'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/server.rb:181:in `start_thread'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (580.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:42:39 -0300
+
+LoadError (Unable to autoload constant ApiBaseController, expected C:/Dropbox/WorkSpace/YTV/AdminYehudim/app/controllers/concerns/api_base_controller.rb to define it):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (621.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:43:17 -0300
+
+LoadError (Unable to autoload constant ApiBaseController, expected C:/Dropbox/WorkSpace/YTV/AdminYehudim/app/controllers/concerns/api_base_controller.rb to define it):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (525.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:44:29 -0300
+
+LoadError (Unable to autoload constant ApiBaseController, expected C:/Dropbox/WorkSpace/YTV/AdminYehudim/app/controllers/concerns/api_base_controller.rb to define it):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (17.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (606.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:45:15 -0300
+
+ActionController::RoutingError (uninitialized constant Api::V1::ApiBase1Controller):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (23.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (601.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:45:43 -0300
+
+LoadError (Unable to autoload constant ApiBaseController, expected C:/Dropbox/WorkSpace/YTV/AdminYehudim/app/controllers/concerns/api_base_controller.rb to define it):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (569.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:46:16 -0300
+
+LoadError (Unable to autoload constant ApiBaseController, expected C:/Dropbox/WorkSpace/YTV/AdminYehudim/app/controllers/concerns/api_base_controller.rb to define it):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (16.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (550.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:46:50 -0300
+
+ActionController::RoutingError (uninitialized constant Api::V1::ApiBaseController):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (24.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (689.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:47:18 -0300
+
+ActionController::RoutingError (uninitialized constant Api::V1::ApiBaseController):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (24.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (13.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (638.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:47:37 -0300
+
+ActionController::RoutingError (uninitialized constant ApiBaseController):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (18.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (620.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:47:45 -0300
+
+ActionController::RoutingError (uninitialized constant Api::V1::ApiBaseController):
+  app/controllers/api/v1/tvshows_controller.rb:1:in `(root)'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (18.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (10.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (640.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:48:06 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+Completed 200 OK in 232ms (Views: 10.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:49:23 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (5.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+Completed 200 OK in 242ms (Views: 54.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:58:55 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (5.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+Completed 200 OK in 164ms (Views: 2.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 19:59:46 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (4.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+Completed 200 OK in 160ms (Views: 3.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShows" for 127.0.0.1 at 2014-06-17 20:00:48 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (4.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+Completed 200 OK in 170ms (Views: 2.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/tvshows?callback=loadTvShow2" for 127.0.0.1 at 2014-06-17 20:20:17 -0300
+Processing by Api::V1::TvshowsController#index as HTML
+  Parameters: {"callback"=>"loadTvShow2"}
+  [1m[36mTvshow Load (7.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"[0m
+Completed 200 OK in 186ms (Views: 2.0ms | ActiveRecord: 20.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste" for 127.0.0.1 at 2014-06-17 21:08:43 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste"}
+Completed 500 Internal Server Error in 61ms
+
+NoMethodError (undefined method `first' for #<Arel::SelectManager:0x40e625>):
+  app/controllers/api/v1/episodes_controller.rb:4:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (170.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste" for 127.0.0.1 at 2014-06-17 21:10:15 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste"}
+Completed 500 Internal Server Error in 32ms
+
+NoMethodError (undefined method `first' for #<Arel::SelectManager:0x5bae4a>):
+  app/controllers/api/v1/episodes_controller.rb:6:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (165.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste" for 127.0.0.1 at 2014-06-17 21:10:28 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste"}
+Completed 500 Internal Server Error in 81ms
+
+SystemStackError (stack level too deep):
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  org/jruby/RubyHash.java:1339:in `each'
+  org/jruby/RubyEnumerable.java:763:in `map'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:50:in `as_json'
+  activesupport (4.1.1) lib/active_support/core_ext/object/json.rb:159:in `as_json'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (182.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste" for 127.0.0.1 at 2014-06-17 21:13:02 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" WHERE "tvshows"."identifier" = 'teste'
+Completed 200 OK in 110ms (Views: 80.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=te" for 127.0.0.1 at 2014-06-17 21:13:16 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"te"}
+  [1m[36mTvshow Load (1.0ms)[0m  [1mSELECT "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" WHERE "tvshows"."identifier" = 'teste'[0m
+Completed 200 OK in 8ms (Views: 0.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=fala-serio-rabino&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 22:15:21 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"fala-serio-rabino", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (2.0ms)[0m  SELECT  "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" WHERE "tvshows"."identifier" = 'fala-serio-rabino'  ORDER BY "tvshows"."id" ASC LIMIT 1
+Completed 500 Internal Server Error in 63ms
+
+NoMethodError (undefined method `episodes' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:7:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (173.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 22:15:33 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (1.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (1.0ms)[0m  SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" = 1
+Completed 200 OK in 62ms (Views: 0.0ms | ActiveRecord: 6.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAmazonIdentifierToVideo (20140618021826)
+  [1m[35m (8.0ms)[0m  ALTER TABLE "videos" ADD COLUMN "amazon_identifier" character varying(255)
+  [1m[36m (1.0ms)[0m  [1mSELECT version()[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140618021826')
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPK and Serial Sequence (6.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"episodes"'::regclass
+
+  [1m[36mPK and Serial Sequence (2.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"tvshows"'::regclass
+[0m
+  [1m[35mPK and Serial Sequence (2.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"videos"'::regclass
+
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:25:26 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+Completed 500 Internal Server Error in 1685ms
+
+ActiveRecord::ConfigurationError (Association named 'videos' was not found on Tvshow; perhaps you misspelled it?):
+  app/controllers/api/v1/episodes_controller.rb:6:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (240.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:27:22 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (6.0ms)[0m  SELECT  "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" INNER JOIN "videos" ON "videos"."episode_id" = "episodes"."id" WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" = 1[0m
+Completed 500 Internal Server Error in 229ms
+
+NoMethodError (undefined method `order' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (198.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:29:10 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT  "tvshows".* FROM "tvshows" INNER JOIN "episodes" ON "episodes"."tvshow_id" = "tvshows"."id" INNER JOIN "videos" ON "videos"."episode_id" = "episodes"."id" WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" = 1[0m
+Completed 500 Internal Server Error in 121ms
+
+NoMethodError (undefined method `order' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (196.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:31:21 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (2.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)[0m
+  [1m[35mVideo Load (1.0ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)
+Completed 500 Internal Server Error in 169ms
+
+NoMethodError (undefined method `order' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (198.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:34:04 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+Completed 500 Internal Server Error in 31ms
+
+ArgumentError (Direction should be :asc or :desc):
+  app/controllers/api/v1/episodes_controller.rb:6:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (183.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:36:24 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (2.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 55ms
+
+ArgumentError (Support for calling #default_scope without a block is removed. For example instead of `default_scope where(color: 'red')`, please use `default_scope { where(color: 'red') }`. (Alternatively you can just redefine self.default_scope.)):
+  app/models/episode.rb:12:in `Episode'
+  app/models/episode.rb:1:in `(root)'
+  app/controllers/api/v1/episodes_controller.rb:6:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (197.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:37:11 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (25.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY [order] ASC[0m
+ActiveRecord::JDBCError: org.postgresql.util.PSQLException: ERRO: erro de sintaxe em ou próximo a "["
+  Position: 84: SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY [order] ASC
+Completed 500 Internal Server Error in 95ms
+
+ActiveRecord::StatementInvalid (ActiveRecord::JDBCError: org.postgresql.util.PSQLException: ERRO: erro de sintaxe em ou próximo a "["
+  Position: 84: SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY [order] ASC):
+  app/controllers/api/v1/episodes_controller.rb:6:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (180.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:38:28 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (1.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY "order" ASC[0m
+  [1m[35mVideo Load (1.0ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)  ORDER BY "order" ASC
+Completed 500 Internal Server Error in 164ms
+
+NoMethodError (undefined method `order' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (188.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:38:50 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (1.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY "order" ASC
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)  ORDER BY "order" ASC[0m
+Completed 200 OK in 164ms (Views: 1.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/tvshows" for 127.0.0.1 at 2014-06-17 23:43:17 -0300
+Processing by TvshowsController#index as HTML
+  [1m[35mTvshow Load (2.0ms)[0m  SELECT "tvshows".* FROM "tvshows"
+  Rendered tvshows/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 316ms (Views: 306.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 23:43:17 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 23:43:17 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 23:43:18 -0300
+
+
+Started GET "/episodes" for 127.0.0.1 at 2014-06-17 23:43:22 -0300
+Processing by EpisodesController#index as HTML
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"   ORDER BY "order" ASC[0m
+  Rendered episodes/index.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 120ms (Views: 107.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 23:43:25 -0300
+Processing by VideosController#index as HTML
+  [1m[35mVideo Load (2.0ms)[0m  SELECT "videos".* FROM "videos"   ORDER BY "order" ASC
+  Rendered videos/index.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 98ms (Views: 92.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:45:01 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (2.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY "order" ASC
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)  ORDER BY "order" ASC[0m
+Completed 200 OK in 133ms (Views: 1.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:45:30 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+Completed 200 OK in 38ms (Views: 1.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:46:01 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[36mTvshow Load (1.0ms)[0m  [1mSELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY "order" ASC
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)  ORDER BY "order" ASC[0m
+Completed 500 Internal Server Error in 172ms
+
+NoMethodError (undefined method `order' for nil:NilClass):
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+  app/controllers/api/v1/episodes_controller.rb:8:in `index'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (178.0ms)
+
+
+Started GET "/api/v1/episodes?tvshow=teste&callback=loadTvShows" for 127.0.0.1 at 2014-06-17 23:46:10 -0300
+Processing by Api::V1::EpisodesController#index as HTML
+  Parameters: {"tvshow"=>"teste", "callback"=>"loadTvShows"}
+  [1m[35mTvshow Load (1.0ms)[0m  SELECT  "tvshows".* FROM "tvshows"  WHERE "tvshows"."identifier" = 'teste'  ORDER BY "tvshows"."id" ASC LIMIT 1
+  [1m[36mEpisode Load (2.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"  WHERE "episodes"."tvshow_id" IN (1)  ORDER BY "order" ASC[0m
+  [1m[35mVideo Load (1.0ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" IN (1)  ORDER BY "order" ASC
+Completed 200 OK in 162ms (Views: 0.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/videos/1/edit" for 127.0.0.1 at 2014-06-17 23:51:27 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"   ORDER BY "order" ASC
+  Rendered videos/_form.html.erb (141.0ms)
+  Rendered videos/edit.html.erb within layouts/application (176.0ms)
+Completed 200 OK in 237ms (Views: 224.0ms | ActiveRecord: 3.0ms)
+
+
+Started PATCH "/videos/1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+Processing by VideosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "video"=>{"episode_id"=>"1", "identifier"=>"", "title"=>"teste", "description"=>"", "amazon_identifier"=>"Video03", "order"=>"1"}, "commit"=>"Update Video", "id"=>"1"}
+  [1m[36mVideo Load (2.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (3.0ms)[0m  SELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 1  ORDER BY "order" ASC LIMIT 1
+  [1m[36mVideo Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "videos"  WHERE ("videos"."title" = 'teste' AND "videos"."id" != 1) LIMIT 1[0m
+  [1m[35mVideo Exists (0.0ms)[0m  SELECT  1 AS one FROM "videos"  WHERE ("videos"."identifier" = '' AND "videos"."id" != 1) LIMIT 1
+  [1m[36mEpisode Load (1.0ms)[0m  [1mSELECT "episodes".* FROM "episodes"   ORDER BY "order" ASC[0m
+  Rendered videos/_form.html.erb (38.0ms)
+  Rendered videos/edit.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 155ms (Views: 102.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:04 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:05 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:05 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:05 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:05 -0300
+
+
+Started PATCH "/videos/1" for 127.0.0.1 at 2014-06-17 23:57:30 -0300
+Processing by VideosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "video"=>{"episode_id"=>"1", "identifier"=>"teste11", "title"=>"teste", "description"=>"", "amazon_identifier"=>"Video03", "order"=>"1"}, "commit"=>"Update Video", "id"=>"1"}
+  [1m[35mVideo Load (1.0ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1  ORDER BY "order" ASC LIMIT 1
+  [1m[36mEpisode Load (1.0ms)[0m  [1mSELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 1  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mVideo Exists (0.0ms)[0m  SELECT  1 AS one FROM "videos"  WHERE ("videos"."title" = 'teste' AND "videos"."id" != 1) LIMIT 1
+  [1m[36mVideo Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "videos"  WHERE ("videos"."identifier" = 'teste11' AND "videos"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (9.0ms)[0m  UPDATE "videos" SET "amazon_identifier" = 'Video03', "description" = '', "identifier" = 'teste11', "updated_at" = '2014-06-18 02:57:30.980000' WHERE "videos"."id" = 1
+Redirected to http://localhost:3000/videos/1
+Completed 302 Found in 54ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/videos/1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+Processing by VideosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (2.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1  ORDER BY "order" ASC LIMIT 1[0m
+  Rendered videos/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 73ms (Views: 66.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:31 -0300
+
+
+Started GET "/videos" for 127.0.0.1 at 2014-06-17 23:57:35 -0300
+Processing by VideosController#index as HTML
+  [1m[35mVideo Load (3.0ms)[0m  SELECT "videos".* FROM "videos"   ORDER BY "order" ASC
+  Rendered videos/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 77ms (Views: 70.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/videos/1/edit" for 127.0.0.1 at 2014-06-17 23:57:39 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 1  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (1.0ms)[0m  SELECT "episodes".* FROM "episodes"   ORDER BY "order" ASC
+  Rendered videos/_form.html.erb (27.0ms)
+  Rendered videos/edit.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 98ms (Views: 86.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/videos/2/edit" for 127.0.0.1 at 2014-06-17 23:57:42 -0300
+Processing by VideosController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 2  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT "episodes".* FROM "episodes"   ORDER BY "order" ASC
+  Rendered videos/_form.html.erb (28.0ms)
+  Rendered videos/edit.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 111ms (Views: 97.0ms | ActiveRecord: 3.0ms)
+
+
+Started PATCH "/videos/2" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+Processing by VideosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OSVO+KoKDy1JlK0B5fChQ12P4S9rO7Ji1iAC0ZLd+RE=", "video"=>{"episode_id"=>"2", "identifier"=>"teste2", "title"=>"teste2", "description"=>"", "amazon_identifier"=>"Video03", "order"=>"1"}, "commit"=>"Update Video", "id"=>"2"}
+  [1m[36mVideo Load (1.0ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 2  ORDER BY "order" ASC LIMIT 1[0m
+  [1m[35mEpisode Load (2.0ms)[0m  SELECT  "episodes".* FROM "episodes"  WHERE "episodes"."id" = 2  ORDER BY "order" ASC LIMIT 1
+  [1m[36mVideo Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "videos"  WHERE ("videos"."title" = 'teste2' AND "videos"."id" != 2) LIMIT 1[0m
+  [1m[35mVideo Exists (1.0ms)[0m  SELECT  1 AS one FROM "videos"  WHERE ("videos"."identifier" = 'teste2' AND "videos"."id" != 2) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "videos" SET "amazon_identifier" = 'Video03', "description" = '', "updated_at" = '2014-06-18 02:57:47.460000' WHERE "videos"."id" = 2[0m
+Redirected to http://localhost:3000/videos/2
+Completed 302 Found in 62ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/videos/2" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+Processing by VideosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mVideo Load (1.0ms)[0m  SELECT  "videos".* FROM "videos"  WHERE "videos"."id" = 2  ORDER BY "order" ASC LIMIT 1
+  Rendered videos/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 61ms (Views: 47.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:47 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-06-17 23:57:48 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-04 06:39:19 -0300
+
+ActiveRecord::JDBCError (The driver encountered an unknown error: org.postgresql.util.PSQLException: FATAL: autentica��o do tipo password falhou para usu�rio "yehudim"):
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/connection.rb:23:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/adapter.rb:68:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/postgresql/adapter.rb:1275:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/connection_methods.rb:12:in `jdbc_connection'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/postgresql/connection_methods.rb:45:in `postgresql_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:435:in `new_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:445:in `checkout_new_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:416:in `acquire_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:351:in `checkout'
+  C:/jruby-1.7.12/lib/ruby/1.9/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:350:in `checkout'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `connection'
+  C:/jruby-1.7.12/lib/ruby/1.9/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:541:in `retrieve_connection'
+  activerecord (4.1.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.1.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.1.1) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:138:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:94:in `run'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/server.rb:191:in `start_thread'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (7.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (264.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-04 06:40:33 -0300
+
+ActiveRecord::JDBCError (The driver encountered an unknown error: org.postgresql.util.PSQLException: FATAL: autentica��o do tipo password falhou para usu�rio "yehudim"):
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/connection.rb:23:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/adapter.rb:68:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/postgresql/adapter.rb:1275:in `initialize'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/jdbc/connection_methods.rb:12:in `jdbc_connection'
+  activerecord-jdbc-adapter (1.3.7) lib/arjdbc/postgresql/connection_methods.rb:45:in `postgresql_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:435:in `new_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:445:in `checkout_new_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:416:in `acquire_connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:351:in `checkout'
+  C:/jruby-1.7.12/lib/ruby/1.9/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:350:in `checkout'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `connection'
+  C:/jruby-1.7.12/lib/ruby/1.9/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.1.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:541:in `retrieve_connection'
+  activerecord (4.1.1) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.1.1) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.1.1) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+  activesupport (4.1.1) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.1) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.1) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.1) lib/rails/engine.rb:514:in `call'
+  railties (4.1.1) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:138:in `service'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/httpserver.rb:94:in `run'
+  C:/jruby-1.7.12/lib/ruby/1.9/webrick/server.rb:191:in `start_thread'
+
+
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/jruby-1.7.12/lib/ruby/gems/shared/gems/actionpack-4.1.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (187.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-04 06:41:03 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 1271ms (Views: 369.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-07-04 06:41:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-04 06:41:05 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-07-04 06:41:05 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-07-04 06:41:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-04 06:41:05 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/episodes.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/tvshows.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/videos.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-04 06:41:06 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2014-07-14 23:47:39 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (52.0ms)
+Completed 200 OK in 4724ms (Views: 4720.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-07-14 23:47:47 -0300
+
+
+Started GET "/assets/episodes.css?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/tvshows.css?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/videos.css?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-07-14 23:47:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (23.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRabinoToEpisode (20140731030519)
+  [1m[35m (33.0ms)[0m  ALTER TABLE "episodes" ADD COLUMN "rabbi" character varying(255)
+  [1m[36m (2.0ms)[0m  [1mSELECT version()[0m
+  [1m[35mSQL (9.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140731030519')
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPK and Serial Sequence (15.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"episodes"'::regclass
+
+  [1m[36mPK and Serial Sequence (4.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"tvshows"'::regclass
+[0m
+  [1m[35mPK and Serial Sequence (5.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"videos"'::regclass
+
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddFeaturedToTvshow (20140731041047)
+  [1m[35m (9.0ms)[0m  ALTER TABLE "tvshows" ADD COLUMN "featured" boolean
+  [1m[36m (3.0ms)[0m  [1mSELECT version()[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20140731041047')
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mPK and Serial Sequence (9.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"episodes"'::regclass
+
+  [1m[36mPK and Serial Sequence (8.0ms)[0m  [1m          SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"tvshows"'::regclass
+[0m
+  [1m[35mPK and Serial Sequence (6.0ms)[0m            SELECT attr.attname, seq.relname
+          FROM pg_class      seq,
+               pg_attribute  attr,
+               pg_depend     dep,
+               pg_constraint cons
+          WHERE seq.oid           = dep.objid
+            AND seq.relkind       = 'S'
+            AND attr.attrelid     = dep.refobjid
+            AND attr.attnum       = dep.refobjsubid
+            AND attr.attrelid     = cons.conrelid
+            AND attr.attnum       = cons.conkey[1]
+            AND cons.contype      = 'p'
+            AND dep.refobjid      = '"videos"'::regclass
+

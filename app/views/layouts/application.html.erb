@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AdminYehudim</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<ul>
+  <li><%= link_to "Shows", tvshows_path %></li>
+  <li>
+    <%= link_to "Episodes", episodes_path %>
+  </li>
+  <li>
+    <%= link_to "Videos", videos_path %>
+  </li>
+</ul>
+
+
+<%= yield %>
+
+</body>
+</html>

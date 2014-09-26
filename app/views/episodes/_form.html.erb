@@ -1,0 +1,51 @@
+<%= form_for(@episode) do |f| %>
+  <% if @episode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+
+      <ul>
+      <% @episode.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+    <div class="field">
+      <%= f.label :rabbi %><br>
+      <%= f.text_field :rabbi %>
+    </div>
+  <div class="field">
+    <%= f.label :identifier %><br>
+    <%= f.text_field :identifier %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :tvshow_id %><br>
+    <%= select("episode", "tvshow_id", @tvshows.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :publication %><br>
+    <%= f.datetime_select :publication %>
+  </div>
+  <div class="field">
+    <%= f.label :order %><br>
+    <%= f.number_field :order %>
+  </div>
+
+    <div class="field">
+      <%= f.label :spotlight %><br>
+      <%= f.check_box :spotlight %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
