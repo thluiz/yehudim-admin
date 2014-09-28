@@ -10,8 +10,8 @@ default: &default
 development:
   <<: *default
   database: yehudim_development
-  username: yehudim
-  password: xxx123
+  username: codio
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -43,6 +43,8 @@ development:
 test:
   <<: *default
   database: yehudim_test
+  username: codio
+  host: localhost
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

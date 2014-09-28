@@ -19,21 +19,17 @@ platforms :mri, :mingw do
   group :postgresql do
     gem 'pg', '>= 0.11.0'
   end
-
+   
   group :production do
     gem 'therubyracer'
   end
 end
 
-
 gem 'bootstrap-sass', '~> 3.2.0'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyrhino'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
