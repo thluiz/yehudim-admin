@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+#header .brand {
+  width:300px;
+  padding-left:30px;  
+}
+
+#header a.brand {
+  color: #ffffff; 
+}
+
+#header a.brand:visited {
+  color: #ffffff; 
+}
+
+#header a.brand:hover {
+  background-color: transparent; 
+}
