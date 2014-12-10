@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get 'tvshows' => 'tvshows#index'
       get 'tvshow/:identifier' => 'tvshows#show'
       get 'episodes' => 'episodes#index'
-      get 'episode/:rabbi/:identifier' => 'episodes#show'
+      get 'episode/:rabbi/:identifier(/:current)' => 'episodes#show'
       get 'featured' => 'episodes#featured'
     end
   end

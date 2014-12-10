@@ -17,12 +17,20 @@ class Api::V1::EpisodesController < ApiBaseController
   def show
     return if !params[:identifier].present? || !params[:rabbi].present?
 
-    @episode = Episode.where("identifier = ? and rabbi = ? ", params[:identifier], params[:rabbi]).first
-
+    @episode = Episode.where("identifier = ? and rabbi = ? ", params[:identifier], params[:rabbi]).first    
+    current = @episode.videos.where("identifier = ?", params[:current]).first if params[:current].present?
+    current = @episode.videos.first if !params[:current].present? or current.nil?   
+    
+    hash = {
+      :current => current,
+      :episode => @episode,
+      :videos => @episode.videos
+    }
+    
     if params[:callback]
-      render :json => @episode.to_json(:include => :videos), :callback => params[:callback], :content_type => 'application/javascript'
+      render :json => hash, :callback => params[:callback], :content_type => 'application/javascript'
     else
-      render json: @episode.to_json(:include => :videos)
+      render json: hash
     end
   end
 
