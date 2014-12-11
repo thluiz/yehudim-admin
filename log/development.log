@@ -14280,3 +14280,17 @@ Processing by Api::V1::EpisodesController#show as HTML
   [1m[36mVideo Load (0.2ms)[0m  [1mSELECT  "videos".* FROM "videos"  WHERE "videos"."episode_id" = $1 AND ("order" > 1)  ORDER BY "order" ASC LIMIT 1[0m  [["episode_id", 2]]
   [1m[35mVideo Load (0.2ms)[0m  SELECT "videos".* FROM "videos"  WHERE "videos"."episode_id" = $1  ORDER BY "order" ASC  [["episode_id", 2]]
 Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/tvshows?callback=angular.callbacks._0" for 172.17.42.1 at 2014-12-11 01:46:53 +0000
+Processing by Api::V1::TvshowsController#index as */*
+  Parameters: {"callback"=>"angular.callbacks._0"}
+  [1m[36mTvshow Load (0.3ms)[0m  [1mSELECT "tvshows".* FROM "tvshows"   ORDER BY "order" ASC[0m
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/featured?callback=angular.callbacks._1" for 172.17.42.1 at 2014-12-11 01:46:53 +0000
+Processing by Api::V1::EpisodesController#featured as */*
+  Parameters: {"callback"=>"angular.callbacks._1"}
+  [1m[35mEpisode Load (0.2ms)[0m  SELECT "episodes".* FROM "episodes"  WHERE "episodes"."spotlight" = 't'  ORDER BY "order" ASC
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
