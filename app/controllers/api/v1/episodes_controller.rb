@@ -8,7 +8,7 @@ class Api::V1::EpisodesController < ApiBaseController
     @episodes = tvshow ? tvshow.episodes : []
 
     if params[:callback]
-      render :json => @episodes.to_json({:include => { :episodes => { :methods => :amazon_identifier }} }), :callback => params[:callback], :content_type => 'application/javascript'
+      render :json => @episodes.to_json({:include => :videos, :methods => :amazon_identifier }), :callback => params[:callback], :content_type => 'application/javascript'
     else
       render json: @episodes
     end
@@ -40,7 +40,7 @@ class Api::V1::EpisodesController < ApiBaseController
     @episodes = Episode.where(spotlight: true)
 
     if params[:callback]
-      render :json => @episodes.to_json({:include => { :episodes => { :methods => :amazon_identifier }} }), :callback => params[:callback], :content_type => 'application/javascript'
+      render :json => @episodes.to_json({:include => :videos, :methods => :amazon_identifier }), :callback => params[:callback], :content_type => 'application/javascript'
     else
       render json: @episodes
     end
