@@ -20,10 +20,12 @@ class Api::V1::EpisodesController < ApiBaseController
     @episode = Episode.where("identifier = ? and rabbi = ? ", params[:identifier], params[:rabbi]).first    
     current = @episode.videos.where("identifier = ?", params[:current]).first if params[:current].present?
     current = @episode.videos.first if !params[:current].present? or current.nil?   
+    @next = @episode.videos.where('"order" > ?', current.order).first
     
     hash = {
       :current => current,
       :episode => @episode,
+      :next => @next,
       :videos => @episode.videos
     }
     
