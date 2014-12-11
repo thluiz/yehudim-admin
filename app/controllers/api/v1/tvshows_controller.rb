@@ -14,9 +14,9 @@ class Api::V1::TvshowsController < ApiBaseController
     @tvshow = Tvshow.where(identifier: params[:identifier]).first
 
     if params[:callback]
-      render :json => @tvshow.to_json(:include => :episodes), :callback => params[:callback], :content_type => 'application/javascript'
+      render :json => @tvshow.to_json( {:include => { :episodes => { :methods => :amazon_identifier }} } ), :callback => params[:callback], :content_type => 'application/javascript'
     else
-      render json: @tvshow.to_json(:include => :episodes)
+      render json: @tvshow.to_json( {:include => { :episodes => { :methods => :amazon_identifier }} } )
     end
   end
 

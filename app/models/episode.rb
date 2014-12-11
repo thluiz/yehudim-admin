@@ -10,5 +10,9 @@ class Episode < ActiveRecord::Base
   validates_uniqueness_of :identifier
 
   default_scope { order('"order" ASC') }
+  
+  def amazon_identifier
+    videos.first.amazon_identifier
+  end
 
 end
