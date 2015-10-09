@@ -69,4 +69,4 @@ production:
   <<: *default
   database: yehudim_production
   username: yehudim
-  password: "33yehud!mp@55w0rd99"
+  password: <%= ENV['DATABASE_PASS'] %>
