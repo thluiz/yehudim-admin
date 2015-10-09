@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  resources :users
   resources :videos
-
   resources :episodes
-
   resources :tvshows
-
   root 'welcome#index'
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get 'sessions/destroy'
+  
   namespace :api do
     namespace :v1 do
       get 'tvshows' => 'tvshows#index'

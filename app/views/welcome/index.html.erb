@@ -1,0 +1,12 @@
+<% if current_user.nil? %>
+
+  <div style="padding:20px;">
+    <button class="btn btn-social btn-label btn-googleplus" style="width:220px" onclick="location.href='/auth/google_oauth2'"><i class="fa fa-google-plus"></i> Acessar com Google</button>
+  </div>
+
+<% else %>
+
+  <h3>Olá, <%= current_user.email  %>! </h3>
+
+
+<% end %>

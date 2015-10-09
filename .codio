@@ -3,13 +3,11 @@
 
 // Run button configuration
   "commands": {
-        "Node version": "node --version"
+        "Rails Server": "rails s -b 0.0.0.0"
   },
 
 // Preview button configuration
   "preview": {
-        "Project Index (static)": "https://{{domain}}/{{index}}",
-        "Current File (static)": "https://{{domain}}/{{filepath}}",
         "Box URL": "http://{{domain}}:3000/",
         "Box URL SSL": "https://{{domain}}:9500/"
   }

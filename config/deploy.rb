@@ -12,7 +12,7 @@ require 'mina/git'
 
 set :domain, 'server01.thluiz.com'
 set :deploy_to, '/home/thluiz/webapps/adminyehudim'
-set :repository, 'git@codeplane.com:thluiz/Yehudim-Admin.git'
+set :repository, 'git@github.com:thluiz/yehudim-admin.git'
 set :branch, 'master'
 set :rails_env, 'production'
 

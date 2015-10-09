@@ -1,4 +1,4 @@
-class EpisodesController < ApplicationController
+class EpisodesController < InternalController
   before_action :set_episode, only: [:show, :edit, :update, :destroy]
 
   # GET /episodes

@@ -11,27 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731061934) do
+ActiveRecord::Schema.define(version: 20151009180302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "episodes", force: true do |t|
-    t.string   "title"
-    t.string   "identifier"
+  create_table "episodes", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "identifier",  limit: 255
     t.text     "description"
     t.integer  "tvshow_id"
     t.datetime "publication"
     t.integer  "order"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "rabbi"
+    t.string   "rabbi",       limit: 255
     t.boolean  "spotlight"
   end
 
-  create_table "tvshows", force: true do |t|
-    t.string   "name"
-    t.string   "identifier"
+  create_table "tvshows", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "identifier",  limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,15 +39,21 @@ ActiveRecord::Schema.define(version: 20140731061934) do
     t.integer  "order"
   end
 
-  create_table "videos", force: true do |t|
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
     t.integer  "episode_id"
-    t.string   "identifier"
-    t.string   "title"
+    t.string   "identifier",        limit: 255
+    t.string   "title",             limit: 255
     t.text     "description"
     t.integer  "order"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "amazon_identifier"
+    t.string   "amazon_identifier", limit: 255
   end
 
 end

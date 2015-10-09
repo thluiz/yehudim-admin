@@ -9,9 +9,13 @@ gem 'fog'
 
 # Security
 gem 'devise'
+gem 'omniauth'
+gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.2.4'
 
 platforms :jruby do
   #ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.9'

@@ -1,4 +1,4 @@
-class TvshowsController < ApplicationController
+class TvshowsController < InternalController
   before_action :set_tvshow, only: [:show, :edit, :update, :destroy]
 
   # GET /tvshows
