@@ -10,7 +10,7 @@ class Api::V1::EpisodesController < ApiBaseController
     if params[:callback]
       render :json => @episodes.to_json({:include => :videos, :methods => :amazon_identifier }), :callback => params[:callback], :content_type => 'application/javascript'
     else
-      render json: @episodes
+      render json: @episodes.to_json({:include => :videos, :methods => :amazon_identifier })
     end
   end
 
@@ -42,7 +42,7 @@ class Api::V1::EpisodesController < ApiBaseController
     if params[:callback]
       render :json => @episodes.to_json({:include => :videos, :methods => :amazon_identifier }), :callback => params[:callback], :content_type => 'application/javascript'
     else
-      render json: @episodes
+      render :json => @episodes.to_json({:include => :videos, :methods => :amazon_identifier })
     end
   end
 
